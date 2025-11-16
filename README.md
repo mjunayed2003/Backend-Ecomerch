@@ -112,7 +112,7 @@ MONGO_URI=your_mongodb_url
 JWT_SECRET=your_secret_key
 NODE_ENV=development
 
-# Optional PayPal
+optional papal
 PAYPAL_CLIENT_ID=your_client_id
 PAYPAL_SECRET=your_secret_key
 PAYPAL_API_URL=https://api-m.sandbox.paypal.com
