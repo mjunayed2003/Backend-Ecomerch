@@ -81,36 +81,62 @@ API Routes
 Users
 Method	Route	Description
 POST	/api/users	Register user
+
 POST	/api/users/login	User login
+
 GET	/api/users/profile	Get logged-in user's profile
+
 PUT	/api/users/profile	Update profile
+
 GET	/api/users	Admin: get all users
+
 GET	/api/users/:id	Admin: get user by ID
+
 PUT	/api/users/:id	Admin: update user
+
 DELETE	/api/users/:id	Admin: delete user
 Products
+
 Method	Route	Description
+
 GET	/api/products	Get all products
+
 GET	/api/products/top	Get top-rated products
+
 GET	/api/products/:id	Get product by ID
+
 POST	/api/products	Admin: create product
+
 PUT	/api/products/:id	Admin: update product
+
 DELETE	/api/products/:id	Admin: delete product
+
 POST	/api/products/:id/reviews	Add product review
 Orders
+
 Method	Route	Description
+
 POST	/api/orders	Create new order
+
 GET	/api/orders	Admin: get all orders
+
 GET	/api/orders/myorders	Get logged-in user's orders
+
 GET	/api/orders/:id	Get order by ID
+
 PUT	/api/orders/:id/pay	Update order to paid
+
 PUT	/api/orders/:id/deliver	Admin: update order to delivered
 Payments
+
 Method	Route	Description
+
 GET	/api/config/paypal	Fetch PayPal client ID
 Uploads
+
 Method	Route	Description
 POST	/api/upload	Upload an image (jpg, jpeg, png only)
+
 Built With
 
 Node.js
@@ -139,18 +165,26 @@ backend/
 │  ├─ userController.ts
 │  ├─ paypalController.ts
 │  └─ uploadController.ts
+
+
 ├─ middleware/
 │  └─ authMiddleware.ts
+
+
 ├─ models/
 │  ├─ Order.ts
 │  ├─ Product.ts
 │  └─ User.ts
+
+
 ├─ routes/
 │  ├─ orderRoutes.ts
 │  ├─ productRoutes.ts
 │  ├─ userRoutes.ts
 │  ├─ paypalRoutes.ts
 │  └─ uploadRoutes.ts
+
+
 ├─ utils/
 │  └─ generateToken.ts
 ├─ server.ts
