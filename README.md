@@ -55,6 +55,9 @@ Backend-Ecomerch/
 │   ├── paypalController.ts
 │   ├── productController.ts
 │   └── userController.ts
+
+
+
 │── data/
 │   ├── orderController.test.ts
 │   ├── paypalController.test.ts
@@ -64,22 +67,30 @@ Backend-Ecomerch/
 │   ├── products.test.ts
 │   ├── reviews.test.ts
 │   └── users.test.ts
+
+
 │── middlewares/
 │   ├── authMiddleware.ts
 │   ├── authMiddleware.test.ts
 │   └── errorMiddleware.ts
+
+
 │── models/
 │   ├── userModel.ts
 │   ├── productModel.ts
 │   ├── orderModel.ts
 │   └── index.ts
+
+
 │── routes/
 │   ├── orderRoutes.ts
 │   ├── paypalRoutes.ts
 │   ├── productRoutes.ts
 │   ├── uploadRoutes.ts
 │   └── userRoutes.ts
-│── types/
+
+
+
 │── utils/
 │   ├── generateToken.ts
 │   └── generateToken.test.ts
