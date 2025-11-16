@@ -1,185 +1,158 @@
-🛒 Backend-Ecomerch
+🛒 E-Commerce Backend (MERN + TypeScript)
+Project Overview
 
-A Production-Ready E-Commerce Backend built with Express, TypeScript, MongoDB 
+This is a full-featured E-Commerce backend API built using Node.js, Express, MongoDB, and TypeScript.
+It supports products, orders, users, payments (PayPal), and uploads with role-based access control (Admin/User).
 
-This repository contains the complete backend system for an E-Commerce platform including authentication, orders, product management, reviews, and admin controls.
+The API handles user authentication, product management, order management, and payments efficiently and securely.
 
-🚀 Features
-🔐 Authentication & Users
+Features
+Users
 
-User Registration & Login
+Register and login users
 
-JWT-based Authentication
+View and update user profiles
 
-Admin Role Protection
+Admin can view, update, and delete users
 
-User Profile & Update
+Products
 
-Password Hashing (bcrypt)
+List all products or single product by ID
 
-🛍 Products
+Admin can create, update, and delete products
 
-Create, Update, Delete Products
+Users can add product reviews
 
-Get All Products / Single Product
+Top products retrieval
 
-Product Search & Filters
+Orders
 
-Product Reviews (with rating)
+Users can create orders
 
-📦 Orders
+View individual orders or all orders (Admin)
 
-Create Orders
+Update order payment status (PayPal integration)
 
-Update Order Status
+Update delivery status (Admin only)
 
-Payment Status
+View logged-in user's orders
 
-Get User Orders
+Payments
 
-Admin – Get All Orders
+Fetch PayPal client ID for frontend integration
 
+Uploads
 
-🧪 Unit Tests Included
+Image upload handling using Multer
 
-Controllers, Routes & Utilities tested with:
+Only accepts images (.jpg, .jpeg, .png)
 
-Jest
+Installation
 
-Supertest
+Clone the repository
 
-📁 Project Structure
-Backend-Ecomerch/
-│── controllers/
-│   ├── orderController.ts
-│   ├── paypalController.ts
-│   ├── productController.ts
-│   └── userController.ts
+git clone <your-repo-url>
+cd ecomerch-backend
 
 
+Install dependencies
 
-│── data/
-│   ├── orderController.test.ts
-│   ├── paypalController.test.ts
-│   ├── productController.test.ts
-│   ├── userController.test.ts
-│   ├── orders.test.ts
-│   ├── products.test.ts
-│   ├── reviews.test.ts
-│   └── users.test.ts
-
-
-│── middlewares/
-│   ├── authMiddleware.ts
-│   ├── authMiddleware.test.ts
-│   └── errorMiddleware.ts
-
-
-│── models/
-│   ├── userModel.ts
-│   ├── productModel.ts
-│   ├── orderModel.ts
-│   └── index.ts
-
-
-│── routes/
-│   ├── orderRoutes.ts
-│   ├── paypalRoutes.ts
-│   ├── productRoutes.ts
-│   ├── uploadRoutes.ts
-│   └── userRoutes.ts
-
-
-
-│── utils/
-│   ├── generateToken.ts
-│   └── generateToken.test.ts
-│── server.ts
-│── seeder.ts
-│── package.json
-│── tsconfig.json
-└── .gitignore
-
-📦 Installation
 npm install
 
-⚙️ Environment Setup
 
 Create a .env file:
 
+MONGO_URI=<your-mongodb-connection-string>
+JWT_SECRET=<your-jwt-secret>
+PAYPAL_CLIENT_ID=<your-paypal-client-id>
 PORT=5000
-MONGO_URI=your_mongodb_url
-JWT_SECRET=your_secret_key
-NODE_ENV=development
 
-optional papal
-PAYPAL_CLIENT_ID=your_client_id
-PAYPAL_SECRET=your_secret_key
-PAYPAL_API_URL=https://api-m.sandbox.paypal.com
 
-▶️ Running the Server
-Development
+Start the server
+
+npm run server
+
+
+Start server + client concurrently (if frontend is in the same repo)
+
 npm run dev
 
-Production Build
-npm run build
-npm start
+API Routes
+Users
+Method	Route	Description
+POST	/api/users	Register user
+POST	/api/users/login	User login
+GET	/api/users/profile	Get logged-in user's profile
+PUT	/api/users/profile	Update profile
+GET	/api/users	Admin: get all users
+GET	/api/users/:id	Admin: get user by ID
+PUT	/api/users/:id	Admin: update user
+DELETE	/api/users/:id	Admin: delete user
+Products
+Method	Route	Description
+GET	/api/products	Get all products
+GET	/api/products/top	Get top-rated products
+GET	/api/products/:id	Get product by ID
+POST	/api/products	Admin: create product
+PUT	/api/products/:id	Admin: update product
+DELETE	/api/products/:id	Admin: delete product
+POST	/api/products/:id/reviews	Add product review
+Orders
+Method	Route	Description
+POST	/api/orders	Create new order
+GET	/api/orders	Admin: get all orders
+GET	/api/orders/myorders	Get logged-in user's orders
+GET	/api/orders/:id	Get order by ID
+PUT	/api/orders/:id/pay	Update order to paid
+PUT	/api/orders/:id/deliver	Admin: update order to delivered
+Payments
+Method	Route	Description
+GET	/api/config/paypal	Fetch PayPal client ID
+Uploads
+Method	Route	Description
+POST	/api/upload	Upload an image (jpg, jpeg, png only)
+Built With
 
-🧪 Running Tests
+Node.js
 
-Run all tests:
+Express.js
 
-npm test
+MongoDB
 
+Mongoose
 
-Run individual test:
+TypeScript
 
-npm test -- productController.test.ts
+bcryptjs
 
-🚀 API Endpoints
-👤 Users
+jsonwebtoken
 
-POST /api/users/register
-POST /api/users/login
-GET /api/users/profile
-PUT /api/users/profile
+express-async-handler
 
-🛒 Products
+Multer
 
-GET /api/products
-GET /api/products/:id
-POST /api/products (admin)
-PUT /api/products/:id (admin)
-DELETE /api/products/:id (admin)
-POST /api/products/:id/reviews
-
-📦 Orders
-
-POST /api/orders
-GET /api/orders/myorders
-GET /api/orders (admin)
-PUT /api/orders/:id/pay
-PUT /api/orders/:id/deliver (admin)
-
-💳 PayPal
-
-POST /api/paypal/create-order
-POST /api/paypal/capture-order
-
-🛠 Scripts
-"scripts": {
-  "dev": "ts-node-dev --respawn --transpile-only server.ts",
-  "build": "tsc",
-  "start": "node dist/server.js",
-  "test": "jest"
-}
-
-🧹 Code Quality
-
-TypeScript Strict Mode
-
-Centralized Error Handling
-
-Reusable Middleware
-
-Clean & Modular Architecture
+Project Structure
+backend/
+├─ controllers/
+│  ├─ orderController.ts
+│  ├─ productController.ts
+│  ├─ userController.ts
+│  ├─ paypalController.ts
+│  └─ uploadController.ts
+├─ middleware/
+│  └─ authMiddleware.ts
+├─ models/
+│  ├─ Order.ts
+│  ├─ Product.ts
+│  └─ User.ts
+├─ routes/
+│  ├─ orderRoutes.ts
+│  ├─ productRoutes.ts
+│  ├─ userRoutes.ts
+│  ├─ paypalRoutes.ts
+│  └─ uploadRoutes.ts
+├─ utils/
+│  └─ generateToken.ts
+├─ server.ts
+├─ tsconfig.json
+└─ package.json
